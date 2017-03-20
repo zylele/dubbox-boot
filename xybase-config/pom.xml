@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.xingyun.base</groupId>
+	<artifactId>xybase-config</artifactId>
+	<version>1.0.0</version>
+	<name>xybase-config</name>
+	
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>public</id>
+			<name>Public Repositories</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>public</id>
+			<name>Public Repositories</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<properties>
+		<!-- 驱动 -->
+		<master.jdbc.driver>com.mysql.jdbc.Driver</master.jdbc.driver>
+		<!-- JDBC URL -->
+		<master.jdbc.url>jdbc:mysql://localhost:3306/xy_test?useUnicode=true</master.jdbc.url>
+		<!-- 数据库用户名 -->
+		<master.jdbc.username>root</master.jdbc.username>
+		<!-- 数据库密码 -->
+		<master.jdbc.password></master.jdbc.password>
+		<!-- 连接池最小连接数 -->
+		<master.db.pool.min>10</master.db.pool.min>
+		<!-- 连接池初始连接数 -->
+		<master.db.pool.init>10</master.db.pool.init>
+		<!-- 连接池最大连接数 -->
+		<master.db.pool.max>20</master.db.pool.max>
+		
+		<!-- 驱动 -->
+		<slave.jdbc.driver>com.mysql.jdbc.Driver</slave.jdbc.driver>
+		<!-- JDBC URL -->
+		<slave.jdbc.url>jdbc:mysql://localhost:3306/xy_test?useUnicode=true</slave.jdbc.url>
+		<!-- 数据库用户名 -->
+		<slave.jdbc.username>root</slave.jdbc.username>
+		<!-- 数据库密码 -->
+		<slave.jdbc.password></slave.jdbc.password>
+		<!-- 连接池最小连接数 -->
+		<slave.db.pool.min>10</slave.db.pool.min>
+		<!-- 连接池初始连接数 -->
+		<slave.db.pool.init>10</slave.db.pool.init>
+		<!-- 连接池最大连接数 -->
+		<slave.db.pool.max>20</slave.db.pool.max>
+		
+		<!-- Memcached配置 -->
+		<cache.memcached.server.hosts>localhost:11211</cache.memcached.server.hosts>
+		<!-- Memcached连接池数目 -->
+		<cache.memcached.server.pool.size>2</cache.memcached.server.pool.size>
+		
+		<rabbitmq.host>localhost</rabbitmq.host>
+		<rabbitmq.port>5672</rabbitmq.port>
+		<rabbitmq.username>user</rabbitmq.username>
+		<rabbitmq.password>user</rabbitmq.password>
+		<rabbitmq.virtual-host></rabbitmq.virtual-host>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.xmemcached</groupId>
+			<artifactId>xmemcached</artifactId>
+			<version>1.4.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.8.4</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.4.9</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<version>1.2.8.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+			<version>1.3.5.RELEASE</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>ali-test</id>
+			<properties>
+				<!-- 驱动 -->
+				<master.jdbc.driver>com.mysql.jdbc.Driver</master.jdbc.driver>
+				<!-- JDBC URL -->
+				<master.jdbc.url>jdbc:mysql://ip:port/xy_www?useUnicode=true&amp;autoReconnect=true</master.jdbc.url>
+				<!-- 数据库用户名 -->
+				<master.jdbc.username>root</master.jdbc.username>
+				<!-- 数据库密码 -->
+				<master.jdbc.password></master.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<master.db.pool.min>10</master.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<master.db.pool.init>10</master.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<master.db.pool.max>20</master.db.pool.max>
+				
+				<!-- 驱动 -->
+				<slave.jdbc.driver>com.mysql.jdbc.Driver</slave.jdbc.driver>
+				<!-- JDBC URL -->
+				<slave.jdbc.url>jdbc:mysql://ip:port/xy_www?useUnicode=true&amp;autoReconnect=true</slave.jdbc.url>
+				<!-- 数据库用户名 -->
+				<slave.jdbc.username>root</slave.jdbc.username>
+				<!-- 数据库密码 -->
+				<slave.jdbc.password></slave.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<slave.db.pool.min>10</slave.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<slave.db.pool.init>10</slave.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<slave.db.pool.max>20</slave.db.pool.max>
+				
+				<!-- Memcached配置 -->
+				<cache.memcached.server.hosts>ip:11211</cache.memcached.server.hosts>
+				<!-- Memcached连接池数目 -->
+				<cache.memcached.server.pool.size>2</cache.memcached.server.pool.size>
+
+				<rabbitmq.host>ip</rabbitmq.host>
+				<rabbitmq.port>5672</rabbitmq.port>
+				<rabbitmq.username>user</rabbitmq.username>
+				<rabbitmq.password>user</rabbitmq.password>
+				<rabbitmq.virtual-host>/trunk</rabbitmq.virtual-host>
+			</properties>
+		</profile>
+		<profile>
+			<id>ali-test-branch</id>
+			<properties>
+				<!-- 驱动 -->
+				<master.jdbc.driver>com.mysql.jdbc.Driver</master.jdbc.driver>
+				<!-- JDBC URL -->
+				<master.jdbc.url>jdbc:mysql://ip:port/xy_test?useUnicode=true&amp;autoReconnect=true</master.jdbc.url>
+				<!-- 数据库用户名 -->
+				<master.jdbc.username>root</master.jdbc.username>
+				<!-- 数据库密码 -->
+				<master.jdbc.password></master.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<master.db.pool.min>10</master.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<master.db.pool.init>10</master.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<master.db.pool.max>20</master.db.pool.max>
+
+				<!-- 驱动 -->
+				<slave.jdbc.driver>com.mysql.jdbc.Driver</slave.jdbc.driver>
+				<!-- JDBC URL -->
+				<slave.jdbc.url>jdbc:mysql://ip:port/xy_test?useUnicode=true&amp;autoReconnect=true</slave.jdbc.url>
+				<!-- 数据库用户名 -->
+				<slave.jdbc.username>root</slave.jdbc.username>
+				<!-- 数据库密码 -->
+				<slave.jdbc.password></slave.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<slave.db.pool.min>10</slave.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<slave.db.pool.init>10</slave.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<slave.db.pool.max>20</slave.db.pool.max>
+				
+				<!-- Memcached配置 -->
+				<cache.memcached.server.hosts>localhost:11212</cache.memcached.server.hosts>
+				<!-- Memcached连接池数目 -->
+				<cache.memcached.server.pool.size>2</cache.memcached.server.pool.size>
+
+				<rabbitmq.host>ip</rabbitmq.host>
+				<rabbitmq.port>5672</rabbitmq.port>
+				<rabbitmq.username>user</rabbitmq.username>
+				<rabbitmq.password>user</rabbitmq.password>
+				<rabbitmq.virtual-host>/branch</rabbitmq.virtual-host>
+			</properties>
+		</profile>
+		<profile>
+			<id>ali-prod</id>
+			<properties>
+				<!-- 驱动 -->
+				<master.jdbc.driver>com.mysql.jdbc.Driver</master.jdbc.driver>
+				<!-- JDBC URL -->
+				<master.jdbc.url>jdbc:mysql://ip:port/xy_www?useUnicode=true&amp;autoReconnect=true</master.jdbc.url>
+				<!-- 数据库用户名 -->
+				<master.jdbc.username>root</master.jdbc.username>
+				<!-- 数据库密码 -->
+				<master.jdbc.password></master.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<master.db.pool.min>10</master.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<master.db.pool.init>10</master.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<master.db.pool.max>20</master.db.pool.max>
+		
+				<!-- 驱动 -->
+				<slave.jdbc.driver>com.mysql.jdbc.Driver</slave.jdbc.driver>
+				<!-- JDBC URL -->
+				<slave.jdbc.url>jdbc:mysql://ip:port/xy_www?useUnicode=true&amp;autoReconnect=true</slave.jdbc.url>
+				<!-- 数据库用户名 -->
+				<slave.jdbc.username>root</slave.jdbc.username>
+				<!-- 数据库密码 -->
+				<slave.jdbc.password></slave.jdbc.password>
+				<!-- 连接池最小连接数 -->
+				<slave.db.pool.min>10</slave.db.pool.min>
+				<!-- 连接池初始连接数 -->
+				<slave.db.pool.init>10</slave.db.pool.init>
+				<!-- 连接池最大连接数 -->
+				<slave.db.pool.max>20</slave.db.pool.max>	
+					
+				<!-- Memcached配置 -->
+				<cache.memcached.server.hosts>ip:11211</cache.memcached.server.hosts>
+				<!-- Memcached连接池数目 -->
+				<cache.memcached.server.pool.size>10</cache.memcached.server.pool.size>
+				
+				<rabbitmq.host>ip</rabbitmq.host>
+				<rabbitmq.port>5672</rabbitmq.port>
+				<rabbitmq.username>user</rabbitmq.username>
+				<rabbitmq.password>user</rabbitmq.password>
+				<rabbitmq.virtual-host>/prod</rabbitmq.virtual-host>
+			</properties>
+		</profile>
+	</profiles>
+	
+</project>

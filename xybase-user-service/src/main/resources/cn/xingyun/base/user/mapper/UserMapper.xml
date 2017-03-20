@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xingyun.base.user.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.xingyun.base.user.model.User">
+    <id column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+  </resultMap> 
+  <!-- 读取用户基本信息 -->
+  <select id="getUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+	SELECT userid, nickname
+	FROM dubbo_user
+	WHERE userid = #{userid,jdbcType=VARCHAR}
+  </select>
+</mapper>
