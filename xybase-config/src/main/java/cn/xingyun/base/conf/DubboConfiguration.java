@@ -18,7 +18,7 @@ public class DubboConfiguration {
 
     @Value("${dubbo.registry.address}")
     private String registryAddress;
-
+    
 	@Value("${dubbo.monitor.protocol}")
     private String monitorProtocol;
 	
@@ -58,6 +58,7 @@ public class DubboConfiguration {
         RegistryConfig registry = new RegistryConfig();
         registry.setProtocol(protocol);
         registry.setAddress(registryAddress);
+        registry.setFile("c:/dubbo/" + applicationName + ".cache");
         return registry;
     }
 
