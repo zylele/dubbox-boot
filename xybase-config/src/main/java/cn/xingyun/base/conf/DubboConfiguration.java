@@ -1,21 +1,27 @@
 package cn.xingyun.base.conf;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.MonitorConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
+import com.alibaba.dubbo.rpc.Exporter;
 
+@Configuration
+@ImportResource(value = "classpath:dubbo-config.xml")
+@ConditionalOnClass(Exporter.class)
+@PropertySource(value = "classpath:/dubbo.properties")
 public class DubboConfiguration {
 
     @Value("${dubbo.application.name}")
     private String applicationName;
     
-    @Value("${dubbo.registr.protocol}")
-    private String protocol;
-
     @Value("${dubbo.registry.address}")
     private String registryAddress;
     
@@ -56,7 +62,6 @@ public class DubboConfiguration {
     public RegistryConfig registryConfig() {
         // 连接注册中心配置
         RegistryConfig registry = new RegistryConfig();
-        registry.setProtocol(protocol);
         registry.setAddress(registryAddress);
         registry.setFile("c:/dubbo/" + applicationName + ".cache");
         return registry;
