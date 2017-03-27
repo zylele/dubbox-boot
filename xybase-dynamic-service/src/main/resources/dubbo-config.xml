@@ -42,6 +42,6 @@
 	<dubbo:annotation package="cn.xingyun.base" />
     
     <!-- 服务提供者缺省值配置 -->
-    <dubbo:provider timeout="5000" delay="-1" retries="2" />
+    <dubbo:provider timeout="60000" delay="-1" retries="2" />
     
 </beans>

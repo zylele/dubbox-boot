@@ -15,7 +15,6 @@ import cn.xingyun.base.user.service.UserQueryService;
 @Service
 public class UserQueryServiceImpl implements UserQueryService{
 
-	//test
 	@Reference(check = false)
 	DynamicQueryService dynamicQueryService;
 	
