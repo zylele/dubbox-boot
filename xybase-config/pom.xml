@@ -66,6 +66,8 @@
 		<rabbitmq.username>user</rabbitmq.username>
 		<rabbitmq.password>user</rabbitmq.password>
 		<rabbitmq.virtual-host></rabbitmq.virtual-host>
+		
+		<dubbo.registry.address>zookeeper://127.0.0.1:2181</dubbo.registry.address>
 	</properties>
 	
 	<dependencies>
@@ -222,6 +224,8 @@
 				<rabbitmq.username>user</rabbitmq.username>
 				<rabbitmq.password>user</rabbitmq.password>
 				<rabbitmq.virtual-host>/trunk</rabbitmq.virtual-host>
+				
+				<dubbo.registry.address>zookeeper://ip:2181</dubbo.registry.address>
 			</properties>
 		</profile>
 		<profile>
@@ -267,6 +271,8 @@
 				<rabbitmq.username>user</rabbitmq.username>
 				<rabbitmq.password>user</rabbitmq.password>
 				<rabbitmq.virtual-host>/branch</rabbitmq.virtual-host>
+				
+				<dubbo.registry.address>zookeeper://ip:2181</dubbo.registry.address>
 			</properties>
 		</profile>
 		<profile>
@@ -312,6 +318,8 @@
 				<rabbitmq.username>user</rabbitmq.username>
 				<rabbitmq.password>user</rabbitmq.password>
 				<rabbitmq.virtual-host>/prod</rabbitmq.virtual-host>
+				
+				<dubbo.registry.address>zookeeper://ip:2181</dubbo.registry.address>
 			</properties>
 		</profile>
 	</profiles>

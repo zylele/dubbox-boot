@@ -20,28 +20,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="xybase-user-service" />
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="xybase-consumer" />
 
-	<!-- 使用zookeeper注册中心暴露服务地址 -->
-	<dubbo:registry address="${dubbo.registry.address}" file="c:/dubbo/xybase-user-service.cache"/>
+	<!-- 使用zookeeper注册中心暴露发现服务地址 -->
+	<dubbo:registry address="${dubbo.registry.address}" file="c:/dubbo/xybase-consumer.cache"/>
 
-	<!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880" />
-    
-    <!-- <dubbo:protocol name="rest" port="8888" server="tomcat"/> -->
-
-    <!-- <dubbo:protocol name="http" port="8889"/>
-    <dubbo:protocol name="hessian" port="8890"/>
-    <dubbo:protocol name="webservice" port="8892"/> -->
-    
     <!-- 通过注册中心发现监控中心服务 -->
     <dubbo:monitor protocol="registry" />
     
     <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
 	<dubbo:annotation package="cn.xingyun.base" />
     
-    <!-- 服务提供者缺省值配置 -->
-    <dubbo:provider timeout="5000" delay="-1" retries="2" />
-    
+    <!-- 关闭所有服务的启动时检查 check=false，总是会返回引用，当服务恢复时，能自动连上-->
+    <dubbo:consumer check="false" />
 </beans>
