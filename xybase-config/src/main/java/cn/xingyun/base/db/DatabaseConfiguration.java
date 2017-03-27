@@ -1,4 +1,4 @@
-package cn.xingyun.base.conf;
+package cn.xingyun.base.db;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-
-import cn.xingyun.base.rw.DbContextHolder;
-import cn.xingyun.base.rw.ReadWriteSplitRoutingDataSource;
-
 
 /**
  * 数据库配置

@@ -1,4 +1,4 @@
-package cn.xingyun.base.conf;
+package cn.xingyun.base.db;
 
 import javax.sql.DataSource;
 

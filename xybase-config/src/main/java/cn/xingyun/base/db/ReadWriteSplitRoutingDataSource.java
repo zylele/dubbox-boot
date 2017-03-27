@@ -1,4 +1,4 @@
-package cn.xingyun.base.rw;
+package cn.xingyun.base.db;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
