@@ -11,4 +11,11 @@
 	FROM dubbo_user
 	WHERE userid = #{userid,jdbcType=VARCHAR}
   </select>
+  
+  <!-- 修改昵称 -->
+  <update id="updateNickname" parameterType="map">
+  	UPDATE dubbo_user
+  	SET nickname = #{nickname,jdbcType=VARCHAR}
+  	WHERE userid = #{userid,jdbcType=VARCHAR}
+  </update>
 </mapper>

@@ -26,8 +26,4 @@ public class UserQueryServiceImpl implements UserQueryService{
 		return userMapper.getUser(userid);
 	}
 
-	@Override
-	public String insert(String s) {
-		return s;
-	}
 }

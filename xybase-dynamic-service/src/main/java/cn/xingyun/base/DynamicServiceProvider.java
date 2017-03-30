@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ImportResource(value = "classpath:dubbo-config.xml")
+@ImportResource(value = "classpath*:*.xml")
 @SpringBootApplication
 public class DynamicServiceProvider implements EmbeddedServletContainerCustomizer{
     public static void main(String[] args) {

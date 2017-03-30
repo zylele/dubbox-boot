@@ -24,9 +24,6 @@ public class DynamicController {
 	
 	@RequestMapping(value="/dynamic/insert/{s}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String insert(@PathVariable("s") String s){
-		for(int i=0; i<100; i++){
-			dynamicQueryService.insert(s);
-		}
 		return dynamicQueryService.insert(s);
 	}
 }

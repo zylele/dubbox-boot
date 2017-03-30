@@ -10,6 +10,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 
 import cn.xingyun.base.user.model.User;
 import cn.xingyun.base.user.service.UserQueryService;
+import cn.xingyun.base.user.service.UserUpdateService;
 
 @RestController
 public class UserController {
@@ -17,13 +18,21 @@ public class UserController {
 	@Reference
 	UserQueryService userQueryService;
 	
-	@RequestMapping(value="/user/{userid}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Reference
+	UserUpdateService userUpdateService;
+	
+	@RequestMapping(value="/user/get/{userid}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User getUser(@PathVariable("userid") String userid){
 		return userQueryService.getUser(userid);
 	}
 	
-	@RequestMapping(value="/user/insert/{s}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String insert(@PathVariable("s") String s){
-		return userQueryService.insert(s);
+	@RequestMapping(value="/user/update/{userid}/{nickname}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String insert(@PathVariable("userid") String userid, @PathVariable("nickname") String nickname){
+		int count = userUpdateService.updateNickname(nickname, userid);
+		if(count == 1){
+			return "success";
+		}else{
+			return "failed";
+		}
 	}
 }
