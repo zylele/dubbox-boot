@@ -47,7 +47,7 @@ dubbox-demo是一个基于dubbox、SpringBoot、旨在帮助开发者能迅速�
 
 - 访问`http://localhost:1000/user/{1,2,3}`，`http://localhost:1000/dynamic/{1,2,3}`
 
-服务主要配置详情请点击我的博文[dubbox快速指南](http://lle.coding.me/2017/03/07/dubbox-demo/)
+服务主要配置详情请点击我的博文[dubbox快速指南](http://lle.coding.me/2017/03/07/dubbo-demo/)
 
 ## 服务治理与运维
 
