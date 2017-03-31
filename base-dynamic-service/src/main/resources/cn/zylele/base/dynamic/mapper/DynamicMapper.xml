@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zylele.base.dynamic.mapper.DynamicMapper">
+	<resultMap id="BaseResultMap" type="cn.zylele.base.dynamic.model.Dynamic">
+  		<id column="id" jdbcType="INTEGER" property="id" />
+    	<result column="content" jdbcType="VARCHAR" property="content" />
+	</resultMap> 
+  <!-- 读取动态基本信息 -->
+  <select id="getDynamic" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	SELECT *
+	FROM dubbo_dynamic
+	WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

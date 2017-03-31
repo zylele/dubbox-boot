@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="base-consumer" />
+
+	<!-- 使用zookeeper注册中心暴露发现服务地址 -->
+	<dubbo:registry address="${dubbo.registry.address}" file="c:/dubbo/base-consumer.cache"/>
+
+    <!-- 通过注册中心发现监控中心服务 -->
+    <dubbo:monitor protocol="registry" />
+    
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+	<dubbo:annotation package="cn.zylele.base" />
+    
+    <!-- 关闭所有服务的启动时检查 check=false，总是会返回引用，当服务恢复时，能自动连上-->
+    <dubbo:consumer check="false" />
+</beans>
