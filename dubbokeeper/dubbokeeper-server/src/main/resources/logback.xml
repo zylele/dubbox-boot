@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
     <substitutionProperty name="PROJECT_NAME" value="dubbokeeper"/>
-    <substitutionProperty name="LOG_HOME" value="/dubbokeeper-logs/dubbokeeper-server-logs"/>
+    <substitutionProperty name="LOG_HOME" value="${monitor.log.home}"/>
 
     <timestamp key="byDate" datePattern="yyyyMMdd" />
 
