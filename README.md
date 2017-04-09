@@ -4,6 +4,18 @@
 
 dubbox-demo是一个基于dubbox(dubbo-2.8.4)、SpringBoot、旨在帮助开发者能迅速构建启动dubbox项目的demo
 
+各工程：
+
+- base-common 接口与实体类定义，在消费者与提供者共享
+
+- base-config dubbo、数据库、缓存、等等的配置管理，被各个服务提供者依赖
+
+- base-consumer 消费者示例
+
+- base-dynamic-service 提供者示例("动态"服务)
+
+- base-user-service 提供者示例("用户"服务)
+
 ## dubbox-demo包含哪些功能
 
 - 服务提供者示例
