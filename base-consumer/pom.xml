@@ -13,14 +13,14 @@
 			</snapshots>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://repo2.maven.org/maven2/</url>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://repo2.maven.org/maven2/</url>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	
