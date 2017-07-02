@@ -17,7 +17,7 @@ public class DynamicController {
 	@Reference
 	DynamicQueryService dynamicQueryService;
 	
-	@RequestMapping(value="/dynamic/{id}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/dynamic/get/{id}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Dynamic getDynamic(@PathVariable("id") Integer id){
 		return dynamicQueryService.getDynamic(id);
 	}
