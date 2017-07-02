@@ -1,8 +1,8 @@
-# dubbox-demo
+# dubbox-boot
 
-## dubbox-demo
+## dubbox-boot
 
-dubbox-demo是一个基于dubbox、SpringBoot、旨在帮助开发者能迅速构建启动dubbox项目的demo
+dubbox-boot是一个基于Dubbox、SpringBoot，迅速构建启动的dubbox项目
 
 各工程：
 
