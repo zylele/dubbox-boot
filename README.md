@@ -2,7 +2,7 @@
 
 ## dubbox-demo
 
-dubbox-demo是一个基于dubbox(dubbo-2.8.4)、SpringBoot、旨在帮助开发者能迅速构建启动dubbox项目的demo
+dubbox-demo是一个基于dubbox、SpringBoot、旨在帮助开发者能迅速构建启动dubbox项目的demo
 
 各工程：
 
