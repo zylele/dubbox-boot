@@ -27,6 +27,9 @@
 	<dubbo:annotation package="cn.zylele.base" />
     
     <!-- 服务提供者缺省值配置 -->
-    <dubbo:provider timeout="60000" delay="-1" retries="2" />
+    <dubbo:provider timeout="60000" delay="-1" retries="0" />
+    
+    <!-- 关闭所有服务的启动时检查 check=false，总是会返回引用，当服务恢复时，能自动连上-->
+	<dubbo:consumer check="false" />
     
 </beans>

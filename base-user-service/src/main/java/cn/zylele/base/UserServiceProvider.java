@@ -1,7 +1,11 @@
 package cn.zylele.base;
 
-import org.springframework.boot.SpringApplication;
+import java.util.concurrent.CountDownLatch;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
@@ -10,10 +14,17 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 public class UserServiceProvider {
 	
+	@Bean
+    public CountDownLatch closeLatch() {
+        return new CountDownLatch(1);
+    }
+	
 	public static void main(String[] args) throws InterruptedException {
-
-		SpringApplication app = new SpringApplication(UserServiceProvider.class);
-    	app.setWebEnvironment(false);
-    	app.run(args);
+		ApplicationContext ctx = new SpringApplicationBuilder()
+        .sources(UserServiceProvider.class)
+        .web(false)
+        .run(args);
+		CountDownLatch closeLatch = ctx.getBean(CountDownLatch.class);
+        closeLatch.await();
     }
 }
