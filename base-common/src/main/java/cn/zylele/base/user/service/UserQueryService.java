@@ -1,9 +1,12 @@
 package cn.zylele.base.user.service;
 
+import java.util.List;
+import java.util.Map;
+
 import cn.zylele.base.user.model.User;
 
 public interface UserQueryService {
 	
-	User getUser(String userid);
+	List<Map<String, Object>> getUser(Integer userid);
 	
 }

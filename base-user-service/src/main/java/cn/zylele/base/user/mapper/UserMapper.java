@@ -1,5 +1,8 @@
 package cn.zylele.base.user.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import cn.zylele.base.user.model.User;
@@ -10,7 +13,7 @@ public interface UserMapper {
 	 * @param userid
 	 * @return
 	 */
-	User getUser(String userid);
+	List<Map<String, Object>> getUser(Integer userid);
 	
 	/**
 	 * 修改昵称

@@ -35,11 +35,11 @@
 		<!-- 驱动 -->
 		<master.jdbc.driver>com.mysql.jdbc.Driver</master.jdbc.driver>
 		<!-- JDBC URL -->
-		<master.jdbc.url>jdbc:mysql://123.57.94.251:3306/xy_www?useUnicode=true</master.jdbc.url>
+		<master.jdbc.url>jdbc:mysql://10.16.4.97:3306/minsu-springboot-test?useUnicode=true</master.jdbc.url>
 		<!-- 数据库用户名 -->
-		<master.jdbc.username>xy</master.jdbc.username>
+		<master.jdbc.username>dz_dev</master.jdbc.username>
 		<!-- 数据库密码 -->
-		<master.jdbc.password>xingyun-xbk</master.jdbc.password>
+		<master.jdbc.password>ziroom</master.jdbc.password>
 		<!-- 连接池最小连接数 -->
 		<master.db.pool.min>10</master.db.pool.min>
 		<!-- 连接池初始连接数 -->
@@ -50,11 +50,11 @@
 		<!-- 驱动 -->
 		<slave.jdbc.driver>com.mysql.jdbc.Driver</slave.jdbc.driver>
 		<!-- JDBC URL -->
-		<slave.jdbc.url>jdbc:mysql://123.57.94.251:3306/xy_www?useUnicode=true</slave.jdbc.url>
+		<master.jdbc.url>jdbc:mysql://10.16.4.97:3306/minsu-springboot-test?useUnicode=true</master.jdbc.url>
 		<!-- 数据库用户名 -->
-		<slave.jdbc.username>xy</slave.jdbc.username>
+		<master.jdbc.username>dz_dev</master.jdbc.username>
 		<!-- 数据库密码 -->
-		<slave.jdbc.password>xingyun-xbk</slave.jdbc.password>
+		<master.jdbc.password>ziroom</master.jdbc.password>
 		<!-- 连接池最小连接数 -->
 		<slave.db.pool.min>10</slave.db.pool.min>
 		<!-- 连接池初始连接数 -->

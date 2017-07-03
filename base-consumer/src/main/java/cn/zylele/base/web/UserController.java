@@ -1,5 +1,8 @@
 package cn.zylele.base.web;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +25,7 @@ public class UserController {
 	UserUpdateService userUpdateService;
 	
 	@RequestMapping(value="/user/get/{userid}",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public User getUser(@PathVariable("userid") String userid){
+	public List<Map<String, Object>> getUser(@PathVariable("userid") Integer userid){
 		return userQueryService.getUser(userid);
 	}
 	

@@ -6,10 +6,10 @@
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
   </resultMap> 
   <!-- 读取用户基本信息 -->
-  <select id="getUser" parameterType="java.lang.String" resultMap="BaseResultMap">
-	SELECT userid, nickname
-	FROM dubbo_user
-	WHERE userid = #{userid,jdbcType=VARCHAR}
+  <select id="getUser" parameterType="java.lang.Integer" resultType="java.util.Map">
+	SELECT *
+	FROM user
+	WHERE id = #{id,jdbcType=INTEGER}
   </select>
   
   <!-- 修改昵称 -->

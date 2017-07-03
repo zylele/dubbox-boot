@@ -1,5 +1,8 @@
 package cn.zylele.base.user.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +20,7 @@ public class UserQueryServiceImpl implements UserQueryService{
 	UserMapper userMapper;
 	
 	@Override
-	public User getUser(String userid) {
+	public List<Map<String, Object>> getUser(Integer userid) {
 		return userMapper.getUser(userid);
 	}
 

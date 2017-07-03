@@ -1,30 +1,24 @@
 package cn.zylele.base;
 
-import java.util.concurrent.CountDownLatch;
-
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource(value = "classpath:*.xml")
 @SpringBootApplication
-public class UserServiceProvider {
-	
-	@Bean
-    public CountDownLatch closeLatch() {
-        return new CountDownLatch(1);
-    }
+public class UserServiceProvider implements EmbeddedServletContainerCustomizer{
+	private static int port = 8081;
 	
 	public static void main(String[] args) throws InterruptedException {
-		ApplicationContext ctx = new SpringApplicationBuilder()
-        .sources(UserServiceProvider.class)
-        .web(false)
-        .run(args);
-		CountDownLatch closeLatch = ctx.getBean(CountDownLatch.class);
-        closeLatch.await();
+        SpringApplication.run(UserServiceProvider.class, args);
     }
+
+	@Override
+	public void customize(ConfigurableEmbeddedServletContainer container) {
+		container.setPort(port);
+	}
 }
